@@ -4,7 +4,7 @@ import Carousel from 'react-native-snap-carousel';
 
 
 import { StackNavigationProp } from '@react-navigation/stack';
-import { ActivityIndicator, Button, Dimensions, FlatList, ScrollView, Text, View } from 'react-native'
+import { ActivityIndicator, Dimensions, ScrollView,View } from 'react-native'
 import { useMovies } from '../hooks/useMovies';
 import { MoviePoster } from '../components/MoviePoster';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -15,12 +15,11 @@ const { width: windowWidth } = Dimensions.get('window');
 
 
 
-
 export const HomeScreen = () => {
 
 
 
-    const { moviesList, isLoading, moviesListPopular, moviesListTopRated,moviesListUpcoming } = useMovies()
+    const { isLoading, nowPlaying, popular, topRated, upComing } = useMovies()
     
     const { top } = useSafeAreaInsets()
 
@@ -43,7 +42,7 @@ export const HomeScreen = () => {
                 <View style={{ width: 440 }}>
 
                     <Carousel
-                        data={moviesList}
+                        data={nowPlaying}
                         renderItem={({ item }: any) => <MoviePoster movie={item} />}
                         sliderWidth={windowWidth}
                         itemWidth={300}
@@ -59,19 +58,19 @@ export const HomeScreen = () => {
                 }}>
                  
                     <HorizontalSlider
-                        title='Peliculas Populareh'
-                        movies={moviesListPopular}
+                        title='Popular'
+                        movies={popular}
                     />
                     <HorizontalSlider
                     
-                        title='Peliculas Rated'
-                        movies={moviesListTopRated}
+                        title='Top Rated'
+                        movies={topRated}
 
                     />
                     <HorizontalSlider
                     
-                        title='Peliculas Upcoming'
-                        movies={moviesListUpcoming}
+                        title='Up coming'
+                        movies={upComing}
 
                     />
                   

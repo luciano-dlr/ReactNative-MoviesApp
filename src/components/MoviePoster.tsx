@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Movie } from '../interfaces/movieInterface';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
-import { Navigation } from '../navigation/Navigation';
+import { Navigation, RootStackParams } from '../navigation/Navigation';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 
@@ -10,25 +10,20 @@ interface Props {
     movie: Movie;
     height?: number;
     width?: number;
-  
+    
+    
 }
 
 
 
-
-
-
-
-export const MoviePoster = ({ movie, height = 420, width = 300,   }: Props,) => {
+export const MoviePoster = ({ movie, height = 420, width = 300, }: Props, ) => {
 
 
     const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-    const navigation = useNavigation()
 
-    // const handleGoToDetailScreen = () =>{
-    //     navigation.navigate("DetailScreen",movie)
-    // }
+    const navigation = useNavigation<StackNavigationProp<RootStackParams>>()
+
 
     return (
         <TouchableOpacity

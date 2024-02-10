@@ -40,7 +40,10 @@ export const useMovies = () => {
             nowPlayingPromise,
             popularPromise,
             topRatedPromise,
-            upComingPromise]);
+            upComingPromise
+        ]);
+
+      
 
         setMoviesState({
             nowPlaying:response[0].data.results,
@@ -60,9 +63,6 @@ export const useMovies = () => {
         getMovies();
 
     }, [])
-
-
-
 
 
 

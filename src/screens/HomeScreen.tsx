@@ -51,38 +51,25 @@ export const HomeScreen = () => {
 
                 </View>
 
-           
+                <View style={{ marginVertical:5}}>
 
-                <View style={{
-                    marginVertical:5
-                }}>
-                 
                     <HorizontalSlider
                         title='Popular'
                         movies={popular}
                     />
                     <HorizontalSlider
-                    
                         title='Top Rated'
                         movies={topRated}
-
                     />
                     <HorizontalSlider
-                    
                         title='Up coming'
                         movies={upComing}
-
                     />
                   
-
                 </View>
 
-
-
-
-
-
             </View>
+            
         </ScrollView>
     )
 }

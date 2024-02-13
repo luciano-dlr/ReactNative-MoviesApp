@@ -3,6 +3,8 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { Navigation } from './src/navigation/Navigation';
+import { FadeScreen } from './src/screens/FadeScreen';
+
 
 
 // Ojo leio con el archivo MainActivity.kt  D:\CursoFH.native\MoviesApp\android\app\src\main\java\com\moviesapp>
@@ -10,7 +12,8 @@ import { Navigation } from './src/navigation/Navigation';
 export const App = () => {
   return (
     <NavigationContainer>
-     <Navigation/>
+     {/* <Navigation/> */}
+     <FadeScreen/>
     </NavigationContainer>
   )
 }

@@ -13,12 +13,13 @@ export const HorizontalSlider = ({ title, movies }: Props) => {
 
 
     return (
-        <View style={{ 
+        <View style={{
             height: (title) ? 260 : 250
-            }}>
+        }}>
 
-            <Text style={{ fontSize: 30, fontWeight: '600',marginLeft:10,color:'black',marginVertical:8 }}>{title}</Text>
-
+            <View >
+                <Text style={{ opacity:0.5,fontSize: 30, fontWeight: '800', marginLeft: 20, color: 'black', marginVertical: 8 }}>{title}</Text>
+            </View>
             <FlatList
                 data={movies}
                 renderItem={({ item }: any) => (

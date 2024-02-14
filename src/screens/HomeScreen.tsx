@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Carousel from 'react-native-snap-carousel';
 
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -10,6 +10,8 @@ import { HorizontalSlider } from '../components/HorizontalSlider';
 import { GradientBackground } from '../components/GradientBackground';
 
 import ImageColors from 'react-native-image-colors';
+import { getImageColors } from '../helpers/getColores';
+import { GradientContext } from '../context/GradientContext';
 
 
 
@@ -22,6 +24,7 @@ export const HomeScreen = () => {
 
 const { isLoading, nowPlaying, popular, topRated, upComing } = useMovies()
 const { top } = useSafeAreaInsets()
+const {setMainColors} = useContext(GradientContext)
 
 
 
@@ -30,21 +33,26 @@ const getPosterColors = async (index:number) => {
     const movie = nowPlaying[index]
     const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     
-    console.log("🚀 ~ getPosterColors ~ uri:", uri)
-    // --fer
-    // const colors2 = await getColors(uri, {})
+    const [primary='green',secondary='orange'] = await getImageColors(uri)
+    
+    
+    //Important Leio 13/2/2024  la libreria instalada para extraer colores funciona 1.5
+    // const colors = await ImageColors.getColors(uri,{});
+    
+    setMainColors( {primary,secondary})
 
-    //Important Leio 13/2/2024
-    //efe proyecto libreria rota, pide inyection de expo en proyect algun dia integrado ...
 
-    const colors2 = await ImageColors.getColors(uri,{});
-
-    console.log("SOY EL RESULTADO LEIO", colors2)
-
-    // console.log("🚀 ~ getPosterColors ~ colors2:", colors2)
+  
 
    
 }
+
+    useEffect(() => {
+        if(nowPlaying.length > 0){
+            getPosterColors(0)
+        }
+    }, [nowPlaying])
+
 
 
     if (isLoading) {
@@ -82,6 +90,7 @@ const getPosterColors = async (index:number) => {
                     <View style={{ marginVertical: 5 }}>
 
                         <HorizontalSlider
+                            
                             title='Popular'
                             movies={popular}
                         />

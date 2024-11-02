@@ -1,3 +1,6 @@
+
+![movies-app-r](https://github.com/user-attachments/assets/88c17462-2cf8-44fa-806f-205ce519f435)
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
